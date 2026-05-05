@@ -1,5 +1,10 @@
+<script setup>
+import HeroBanner from '@/components/pages/homeView/heroBanner.vue';
+
+</script>
+
 <template>
-  <main>
-    hello world
-  </main>
+
+<HeroBanner />
+
 </template>
