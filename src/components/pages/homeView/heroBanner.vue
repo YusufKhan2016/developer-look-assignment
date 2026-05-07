@@ -38,7 +38,7 @@ onMounted(() => {
     })
 
     tl.from(heroBannerTextImg.value, {
-        width: 0
+        width: 0,
     })
 })
 </script>
