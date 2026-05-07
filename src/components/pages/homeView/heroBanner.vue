@@ -7,6 +7,9 @@ import ukSocialMedia from '@/assets/images/heroBanner/uksocial-media.webp';
 import LeftWing from '@/components/svg/leftWing.vue';
 import RightWing from '@/components/svg/rightWing.vue';
 
+import gsap, { SplitText } from 'gsap/all';
+import { onMounted, ref } from 'vue';
+
 const imageDatas = [ 
     globalSearchAwards, 
     drum, 
@@ -14,7 +17,30 @@ const imageDatas = [
     ukContentAwards, 
 ]
 
+const headingText = ref(null);
+const heroBannerTextImg = ref(null);
 
+gsap.registerPlugin(SplitText)
+
+onMounted(() => {
+    let split = SplitText.create(headingText.value, { type: 'chars' })
+
+    const tl = gsap.timeline();
+
+    tl.from(split.chars, {
+        y:50,
+        ease: 'power3.out',
+        stagger: {
+            from: "end",
+            amount: -0.4,
+            ease:'power2.inOut'
+        },
+    })
+
+    tl.from(heroBannerTextImg.value, {
+        width: 0
+    })
+})
 </script>
 
 <template>
@@ -25,7 +51,7 @@ const imageDatas = [
             </div>
             <div class="bg-black/30 absolute inset-0"></div>
             <div class="relative z-4 h-screen top-18 flex flex-col items-center">
-                <p class="mx-auto text-sm text-center uppercase">#1 Most Recommended <br> content marketing agency</p>
+                <p class="mx-auto text-xs font-medium text-center uppercase">#1 Most Recommended <br> content marketing agency</p>
                 
                 <div class="flex items-center justify-center gap-4 mt-2">
                     <LeftWing />
@@ -33,14 +59,17 @@ const imageDatas = [
                     <RightWing />
                 </div>
 
-                <div class="flex flex-col items-center mt-2 text-[120px]/28 font-semibold">
-                    <h1>We Create</h1>
+                <div 
+                    class="flex flex-col items-center mt-2 text-[120px]/28 font-medium"
+                    ref="headingText"
+                >
+                    <h1 class="overflow-hidden">We Create</h1>
                     <div class="flex items-center justify-center gap-3"> 
-                        <h1>Category</h1> 
-                        <div class="h-30 w-30 rounded-2xl overflow-hidden">
+                        <h1 class="overflow-hidden pb-5">Category</h1> 
+                        <div ref="heroBannerTextImg" class="h-30 w-30 rounded-2xl overflow-hidden">
                             <img :src="heroBanner" class="h-full w-full object-cover" alt="">
                         </div>
-                        <h1>Leaders</h1>
+                        <h1 class="overflow-hidden pb-5">Leaders</h1>
                     </div>
                 </div>
 
