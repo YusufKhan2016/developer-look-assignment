@@ -28,7 +28,7 @@ onMounted(() => {
     const tl = gsap.timeline();
 
     tl.from(split.chars, {
-        y:50,
+        y:100,
         ease: 'power3.out',
         stagger: {
             from: "end",
@@ -50,7 +50,7 @@ onMounted(() => {
                 <img :src="heroBanner" class="object-cover h-full w-full blur-[10px]">
             </div>
             <div class="bg-black/30 absolute inset-0"></div>
-            <div class="relative z-4 h-screen top-18 flex flex-col items-center">
+            <div class="relative z-4 h-[80vh] top-[13%] flex flex-col justify-between items-center">
                 <p class="mx-auto text-xs font-medium text-center uppercase">#1 Most Recommended <br> content marketing agency</p>
                 
                 <div class="flex items-center justify-center gap-4 mt-2">
@@ -60,7 +60,7 @@ onMounted(() => {
                 </div>
 
                 <div 
-                    class="flex flex-col items-center mt-2 text-[120px]/28 font-medium"
+                    class="flex flex-col items-center justify-center mt-2 text-[120px]/28 font-medium"
                     ref="headingText"
                 >
                     <h1 class="overflow-hidden">We Create</h1>
